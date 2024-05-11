@@ -4,10 +4,21 @@
  */
 package interfas.de.gestion.de.pasajes;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  *
  * @author JEREMY
  */
-public class Pr_Principal {
+public class Clientes {
+public String tarjetaIdentidad;
+public String nombre;
+public String apellido;
+public List<String> sexo;
+public Date fechaDeNacimiento;
+public String email;
+public String contraseña;
+     
     
 }

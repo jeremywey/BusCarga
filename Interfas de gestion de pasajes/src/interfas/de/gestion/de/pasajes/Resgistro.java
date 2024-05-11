@@ -4,8 +4,10 @@
  */
 package interfas.de.gestion.de.pasajes;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -14,7 +16,7 @@ import javax.swing.JTextField;
  * @author Luis Llamas
  */
 public class Resgistro extends javax.swing.JFrame {
-
+List<Clientes> clientes = new ArrayList();
     /**
      * Creates new form Resgistro
      */
@@ -412,11 +414,36 @@ public class Resgistro extends javax.swing.JFrame {
       
       String apellido = campoApellido.getText();
       
-      String Sexo = campoSexo.getSelectedItem().toString();
+      String sexo = campoSexo.getSelectedItem().toString();
       
      String correo = campoCorreo.getText();
       
       String contraseña = String.valueOf(campoContraseña.getPassword());
+      
+      String datosDeUsuario = "Tarjeta de identidad: "+tarjetaIdentidad+"\n";
+      datosDeUsuario += "Nombre: "+nombre+"\n";
+      datosDeUsuario += "Apellido: " +apellido+"\n";
+      datosDeUsuario += "Sexo: "+sexo+"\n";
+      datosDeUsuario += "Correo: "+correo+"\n";
+      datosDeUsuario += "Contraseña: ******** \n";
+      
+      JOptionPane.showMessageDialog(this, "Datos ingresados : " );
+      
+      Clientes usuarioA = new Clientes();
+      usuarioA.tarjetaIdentidad = tarjetaIdentidad;
+      usuarioA.nombre = nombre;
+      usuarioA.apellido = apellido;
+      
+      usuarioA.fechaDeNacimiento = fechaNacimiento;
+      usuarioA.email = correo;
+      usuarioA.contraseña = contraseña;
+      
+      clientes.add(usuarioA);
+      int totalClientes = clientes.size();
+      
+      
+    
+      
       
       
       
