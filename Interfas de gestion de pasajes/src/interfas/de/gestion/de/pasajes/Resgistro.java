@@ -38,7 +38,7 @@ public class Resgistro extends javax.swing.JFrame {
         jLabel61 = new javax.swing.JLabel();
         jLabel62 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
-        campoCedula = new javax.swing.JTextField();
+        campoTarjetaIdentidad = new javax.swing.JTextField();
         jSeparator49 = new javax.swing.JSeparator();
         jLabel64 = new javax.swing.JLabel();
         jSeparator50 = new javax.swing.JSeparator();
@@ -58,7 +58,7 @@ public class Resgistro extends javax.swing.JFrame {
         jLabel70 = new javax.swing.JLabel();
         jSeparator56 = new javax.swing.JSeparator();
         btnCrearCuenta = new javax.swing.JButton();
-        selectorFecha = new com.toedter.calendar.JDateChooser();
+        campoFechaDeNacimiento = new com.toedter.calendar.JDateChooser();
         campoContraseña = new javax.swing.JPasswordField();
         campoRepetirContraseña = new javax.swing.JPasswordField();
         campoNombre = new javax.swing.JTextField();
@@ -70,6 +70,7 @@ public class Resgistro extends javax.swing.JFrame {
 
         btnRegresar.setBackground(new java.awt.Color(153, 204, 255));
         btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
         btnRegresar.setText("Regresar");
         btnRegresar.setBorder(null);
@@ -92,18 +93,30 @@ public class Resgistro extends javax.swing.JFrame {
         Registro3.setForeground(new java.awt.Color(51, 51, 51));
 
         jLabel61.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(0, 0, 0));
         jLabel61.setText("Registro de usuarios");
 
+        jLabel63.setForeground(new java.awt.Color(0, 0, 0));
         jLabel63.setText("Cedula de identidad");
 
-        campoCedula.addActionListener(new java.awt.event.ActionListener() {
+        campoTarjetaIdentidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoCedulacampoCedulaActionPerformed(evt);
+                campoTarjetaIdentidadcampoCedulaActionPerformed(evt);
+            }
+        });
+        campoTarjetaIdentidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoTarjetaIdentidadKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoTarjetaIdentidadKeyTyped(evt);
             }
         });
 
+        jLabel64.setForeground(new java.awt.Color(0, 0, 0));
         jLabel64.setText("Nombres");
 
+        jLabel65.setForeground(new java.awt.Color(0, 0, 0));
         jLabel65.setText("Apellidos");
 
         campoApellido.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +125,7 @@ public class Resgistro extends javax.swing.JFrame {
             }
         });
 
+        jLabel66.setForeground(new java.awt.Color(0, 0, 0));
         jLabel66.setText("Sexo");
 
         campoSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ejile un Sexo...", "Hombre", "Mujer" }));
@@ -131,8 +145,10 @@ public class Resgistro extends javax.swing.JFrame {
             }
         });
 
+        jLabel67.setForeground(new java.awt.Color(0, 0, 0));
         jLabel67.setText("Fecha de nacimiento");
 
+        jLabel68.setForeground(new java.awt.Color(0, 0, 0));
         jLabel68.setText("Correo");
 
         campoCorreo.addActionListener(new java.awt.event.ActionListener() {
@@ -141,8 +157,10 @@ public class Resgistro extends javax.swing.JFrame {
             }
         });
 
+        jLabel69.setForeground(new java.awt.Color(0, 0, 0));
         jLabel69.setText("Contraseña");
 
+        jLabel70.setForeground(new java.awt.Color(0, 0, 0));
         jLabel70.setText("Repita su contraseña");
 
         btnCrearCuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -156,6 +174,12 @@ public class Resgistro extends javax.swing.JFrame {
         campoContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoContraseñaActionPerformed(evt);
+            }
+        });
+
+        campoRepetirContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoRepetirContraseñaActionPerformed(evt);
             }
         });
 
@@ -196,14 +220,14 @@ public class Resgistro extends javax.swing.JFrame {
                         .addGroup(Registro3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel61)
                             .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoTarjetaIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel65)
                             .addComponent(campoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel67)
-                            .addComponent(selectorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoFechaDeNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel68)
                             .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel69)))
@@ -220,7 +244,7 @@ public class Resgistro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(campoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoTarjetaIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator49, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -246,7 +270,7 @@ public class Resgistro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel67)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(selectorFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoFechaDeNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator53, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -311,9 +335,9 @@ public class Resgistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoCedulacampoCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCedulacampoCedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoCedulacampoCedulaActionPerformed
+    private void campoTarjetaIdentidadcampoCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTarjetaIdentidadcampoCedulaActionPerformed
+        
+    }//GEN-LAST:event_campoTarjetaIdentidadcampoCedulaActionPerformed
 
     private void campoNombrecampoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombrecampoNombreActionPerformed
         // TODO add your handling code here:
@@ -332,7 +356,7 @@ public class Resgistro extends javax.swing.JFrame {
     }//GEN-LAST:event_campoSexocampoSexoActionPerformed
 
     private void btnCrearCuentabtnCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCuentabtnCrearCuentaActionPerformed
-        if(!validarCampoVacios(campoCedula,"La cedula es requerida")){
+        if(!validarCampoVacios(campoTarjetaIdentidad,"La cedula es requerida")){
         
         return;
         } if(!validarCampoVacios(campoNombre,"El nombre es requerido")){
@@ -362,9 +386,14 @@ public class Resgistro extends javax.swing.JFrame {
              
          }
          
+         if(validarEmail(campoCorreo.getText())){
+             return;
+             
+         }
+         
        
         
-      Date fechaNacimiento = selectorFecha.getDate();
+      Date fechaNacimiento = campoFechaDeNacimiento.getDate();
       Date fechaActual = new Date();
       if(fechaNacimiento.compareTo(fechaActual)>= 0){
           JOptionPane.showMessageDialog(this,"La fecha escogida debe ser menor a la fecha actual");
@@ -376,6 +405,23 @@ public class Resgistro extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(this,"Debe escoger un genero");
           return;
       }
+      
+      String tarjetaIdentidad = campoTarjetaIdentidad.getText();
+      
+      String nombre = campoNombre.getText();
+      
+      String apellido = campoApellido.getText();
+      
+      String Sexo = campoSexo.getSelectedItem().toString();
+      
+     String correo = campoCorreo.getText();
+      
+      String contraseña = String.valueOf(campoContraseña.getPassword());
+      
+      
+      
+      
+      
        
       
     }//GEN-LAST:event_btnCrearCuentabtnCrearCuentaActionPerformed
@@ -399,6 +445,22 @@ public class Resgistro extends javax.swing.JFrame {
     private void campoContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoContraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoContraseñaActionPerformed
+
+    private void campoTarjetaIdentidadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoTarjetaIdentidadKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoTarjetaIdentidadKeyPressed
+
+    private void campoTarjetaIdentidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoTarjetaIdentidadKeyTyped
+       char tecla = evt.getKeyChar();
+       if(!Character.isDigit(tecla)){
+           evt.consume();
+            JOptionPane.showMessageDialog(this,"Solo puede ingresar numeros ");
+       }
+    }//GEN-LAST:event_campoTarjetaIdentidadKeyTyped
+
+    private void campoRepetirContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoRepetirContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoRepetirContraseñaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -447,7 +509,45 @@ public class Resgistro extends javax.swing.JFrame {
         return true;
     }
     
+    private boolean validarEmail(String email){
+         int cuentaArroba= 0;
+        for(int i = 0 ;i < email.length();i++){
+            char caracter = email.charAt(i);
+            if(Character.isSpaceChar(caracter)){
+                JOptionPane.showMessageDialog(this,"");
+                        return false;
+            } 
+           
+          
+           
+            if((caracter >= 33 && caracter <= 44)||(caracter == 47) || (caracter >= 58 && caracter <= 63)
+                    || (caracter >= 58 && caracter <= 63) ||(caracter >= 91 && caracter <= 94)
+                    || caracter == 96 || (caracter >= 123)){
+                String mensaje = "letras, numeros, _ . @";
+                JOptionPane.showMessageDialog(this,"El email solo puede tene "+ mensaje);
+           return false;
+            }
+            
+            if(email.startsWith("@") || email.endsWith("@") ){
+                JOptionPane.showMessageDialog(this,"El email solo puede empezar "
+                        + "o terminar con @");
+                return false;
+            }
+              if (caracter == ('@')){
+                ++ cuentaArroba;     
+               
+            }
+         
+        }
+         if (cuentaArroba < 1 || cuentaArroba > 1){
+              
+                JOptionPane.showMessageDialog(this,"El email solo puede tener un arroba");
+                return false;
+            }
+        return true;
+    }
     
+
   
       
       
@@ -456,12 +556,13 @@ public class Resgistro extends javax.swing.JFrame {
     private javax.swing.JButton btnCrearCuenta;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JTextField campoApellido;
-    private javax.swing.JTextField campoCedula;
     private javax.swing.JPasswordField campoContraseña;
     private javax.swing.JTextField campoCorreo;
+    private com.toedter.calendar.JDateChooser campoFechaDeNacimiento;
     private javax.swing.JTextField campoNombre;
     private javax.swing.JPasswordField campoRepetirContraseña;
     private javax.swing.JComboBox<String> campoSexo;
+    private javax.swing.JTextField campoTarjetaIdentidad;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
@@ -482,7 +583,6 @@ public class Resgistro extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator54;
     private javax.swing.JSeparator jSeparator55;
     private javax.swing.JSeparator jSeparator56;
-    private com.toedter.calendar.JDateChooser selectorFecha;
     // End of variables declaration//GEN-END:variables
 
  
