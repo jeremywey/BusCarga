@@ -134,7 +134,7 @@
                   <Font name="Arial" size="14" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/interfas/de/gestion/de/pasajes/verificar.png"/>
+                  <Image iconType="3" name="/interfas_de_gestion_de_pasajes/verificar.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Registrarse"/>
               </Properties>
@@ -151,7 +151,7 @@
                   <Font name="Arial" size="14" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/interfas/de/gestion/de/pasajes/acceso.png"/>
+                  <Image iconType="3" name="/interfas_de_gestion_de_pasajes/acceso.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Iniciar sesion"/>
               </Properties>
@@ -206,7 +206,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/interfas/de/gestion/de/pasajes/Bus.jpg"/>
+              <Image iconType="3" name="/interfas_de_gestion_de_pasajes/Bus.jpg"/>
             </Property>
           </Properties>
         </Component>

@@ -1,5 +1,5 @@
 
-package interfas.de.gestion.de.pasajes;
+package interfas_de_gestion_de_pasajes;
 
 
 import java.awt.*;

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package interfas.de.gestion.de.pasajes;
+package interfas_de_gestion_de_pasajes;
 
 /**
  *
@@ -52,7 +52,7 @@ public class InterfazDeGestionDePasajes extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(204, 255, 204));
         jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfas/de/gestion/de/pasajes/verificar.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfas_de_gestion_de_pasajes/verificar.png"))); // NOI18N
         jButton1.setText("Registrarse");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,7 +62,7 @@ public class InterfazDeGestionDePasajes extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(204, 255, 204));
         jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfas/de/gestion/de/pasajes/acceso.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfas_de_gestion_de_pasajes/acceso.png"))); // NOI18N
         jButton2.setText("Iniciar sesion");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +123,7 @@ public class InterfazDeGestionDePasajes extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfas/de/gestion/de/pasajes/Bus.jpg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfas_de_gestion_de_pasajes/Bus.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -152,7 +152,7 @@ public class InterfazDeGestionDePasajes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Resgistro mostrar = new Resgistro();
+       Registro mostrar = new Registro();
        
        mostrar.setVisible(true);
        
