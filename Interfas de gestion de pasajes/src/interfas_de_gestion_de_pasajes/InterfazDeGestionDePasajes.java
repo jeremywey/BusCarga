@@ -15,6 +15,7 @@ public class InterfazDeGestionDePasajes extends javax.swing.JFrame {
      */
     public InterfazDeGestionDePasajes() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -16,12 +16,14 @@ import javax.swing.JTextField;
  * @author Luis Llamas
  */
 public class Registro extends javax.swing.JFrame {
-List<Clientes> clientes = new ArrayList();
+public ArrayList <Clientes> RegistrarClientes;
     /**
      * Creates new form Resgistro
      */
     public Registro() {
         initComponents();
+        RegistrarClientes = new ArrayList<>();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -407,8 +409,12 @@ List<Clientes> clientes = new ArrayList();
          JOptionPane.showMessageDialog(this,"Debe escoger un genero");
           return;
       }
-      
+     
+      int noTarjetaIdentidad;
       String tarjetaIdentidad = campoTarjetaIdentidad.getText();
+      noTarjetaIdentidad = Integer.parseInt(tarjetaIdentidad);
+      
+
       
       String nombre = campoNombre.getText();
       
@@ -429,17 +435,19 @@ List<Clientes> clientes = new ArrayList();
       
       JOptionPane.showMessageDialog(this, "Datos ingresados : " );
       
-      Clientes usuarioA = new Clientes();
-      usuarioA.tarjetaIdentidad = tarjetaIdentidad;
-      usuarioA.nombre = nombre;
-      usuarioA.apellido = apellido;
+      Clientes usuarios = new Clientes();
+      usuarios.tarjetaIdentidad = tarjetaIdentidad;
+      usuarios.nombre = nombre;
+      usuarios.apellido = apellido;
       
-      usuarioA.fechaDeNacimiento = fechaNacimiento;
-      usuarioA.email = correo;
-      usuarioA.contraseña = contraseña;
+      usuarios.fechaDeNacimiento = fechaNacimiento;
+      usuarios.email = correo;
+      usuarios.contraseña = contraseña;
       
-      clientes.add(usuarioA);
-      int totalClientes = clientes.size();
+      RegistrarClientes.add(usuarios);
+      int totalClientes = RegistrarClientes.size();
+      
+      JOptionPane.showMessageDialog(this, "Todo correcto");
       
       
     
@@ -541,8 +549,7 @@ List<Clientes> clientes = new ArrayList();
             }
         return true;
     }
-    
-
+  
   
       
       
