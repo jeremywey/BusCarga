@@ -16,6 +16,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField; 
 
@@ -24,15 +26,13 @@ import javax.swing.JTextField;
  * @author Luis Llamas
  */
 public class Registro extends javax.swing.JFrame {
-public ArrayList <Clientes> RegistrarClientes;
-String barra = File.separator;
-String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
+
+
     /**
      * Creates new form Resgistro
      */
     public Registro() {
         initComponents();
-        RegistrarClientes = new ArrayList<>();
         this.setLocationRelativeTo(null);
     }
     
@@ -46,20 +46,20 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
         cliente.fechaDeNacimiento = campoFechaDeNacimiento.getDate();
         cliente.email = campoCorreo.getText().trim();
         cliente.contraseña =  campoContraseña.getText().trim();
-        String archivoCSV = "clientes.txt"; // Cambia esto al nombre de tu archivo CSV
-        String variableAComprobar = cliente.tarjetaIdentidad; // Cambia esto al valor que deseas comprobar
+        String archivoCSV = "clientes.txt";
+        String variableAComprobar = cliente.tarjetaIdentidad; 
 
         boolean existe = false;
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
             String linea;
             while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split(","); // Suponiendo que tu CSV está separado por comas
+                String[] datos = linea.split(","); 
 
-                // Comparar el valor con la primera columna
+               
                 if (datos.length > 0 && datos[0].equals(variableAComprobar)) {
                     existe = true;
-                    break; // No es necesario seguir leyendo una vez que encontramos la variable
+                    break; 
                 }
             }
         } catch (IOException e) {
@@ -67,7 +67,8 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
         }
 
         if (existe) {
-        JOptionPane.showMessageDialog(this,"Cliente ya registrado");
+        JOptionPane.showMessageDialog(this,"La tarjeta de indentidad ya se encuentra registrada"
+                + "\n por favor ingrese inicie sesion o ingrese una distinte");
         } else {
             try {
                 PrintWriter writer = new PrintWriter(new FileWriter("clientes.txt", true));
@@ -131,11 +132,12 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
 
-        btnRegresar.setBackground(new java.awt.Color(153, 204, 255));
+        btnRegresar.setBackground(new java.awt.Color(102, 102, 102));
         btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
         btnRegresar.setText("Regresar");
         btnRegresar.setBorder(null);
@@ -154,14 +156,18 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        Registro3.setBackground(new java.awt.Color(204, 204, 255));
+        Registro3.setBackground(new java.awt.Color(255, 255, 255));
         Registro3.setForeground(new java.awt.Color(51, 51, 51));
 
         jLabel61.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(102, 102, 102));
         jLabel61.setText("Registro de usuarios");
 
-        jLabel63.setText("Tarjeta de identidad");
+        jLabel63.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel63.setText("Tarjeta de identidad:");
 
+        campoTarjetaIdentidad.setBackground(new java.awt.Color(255, 255, 255));
+        campoTarjetaIdentidad.setBorder(null);
         campoTarjetaIdentidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoTarjetaIdentidadcampoCedulaActionPerformed(evt);
@@ -176,20 +182,29 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
             }
         });
 
-        jLabel64.setText("Nombres");
+        jLabel64.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel64.setText("Nombres:");
 
-        jLabel65.setText("Apellidos");
+        jLabel65.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel65.setText("Apellidos:");
 
+        campoApellido.setBackground(new java.awt.Color(255, 255, 255));
+        campoApellido.setForeground(new java.awt.Color(0, 0, 0));
+        campoApellido.setBorder(null);
         campoApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoApellidocampoApellidoActionPerformed(evt);
             }
         });
 
-        jLabel66.setText("Sexo");
+        jLabel66.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel66.setText("Sexo:");
 
+        campoSexo.setBackground(new java.awt.Color(255, 255, 255));
+        campoSexo.setForeground(new java.awt.Color(0, 0, 0));
         campoSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ejile un Sexo...", "Hombre", "Mujer" }));
         campoSexo.setToolTipText("");
+        campoSexo.setBorder(new javax.swing.border.MatteBorder(null));
         campoSexo.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 campoSexocampoSexoAncestorAdded(evt);
@@ -205,40 +220,63 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
             }
         });
 
-        jLabel67.setText("Fecha de nacimiento");
+        jLabel67.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel67.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel67.setText("Fecha de nacimiento:");
 
-        jLabel68.setText("Correo");
+        jLabel68.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel68.setText("Correo:");
 
+        campoCorreo.setBackground(new java.awt.Color(255, 255, 255));
+        campoCorreo.setForeground(new java.awt.Color(0, 0, 0));
+        campoCorreo.setBorder(null);
         campoCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoCorreoActionPerformed(evt);
             }
         });
 
-        jLabel69.setText("Contraseña");
+        jLabel69.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel69.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel69.setText("Contraseña:");
 
+        jLabel70.setForeground(new java.awt.Color(0, 0, 0));
         jLabel70.setText("Repita su contraseña");
 
+        btnCrearCuenta.setBackground(new java.awt.Color(255, 153, 51));
         btnCrearCuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCrearCuenta.setForeground(new java.awt.Color(255, 255, 255));
         btnCrearCuenta.setText("Crear cuenta");
+        btnCrearCuenta.setBorder(null);
         btnCrearCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearCuentabtnCrearCuentaActionPerformed(evt);
             }
         });
 
+        campoFechaDeNacimiento.setBackground(new java.awt.Color(255, 255, 255));
+        campoFechaDeNacimiento.setForeground(new java.awt.Color(0, 0, 0));
+
+        campoContraseña.setBackground(new java.awt.Color(255, 255, 255));
+        campoContraseña.setForeground(new java.awt.Color(0, 0, 0));
+        campoContraseña.setBorder(null);
         campoContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoContraseñaActionPerformed(evt);
             }
         });
 
+        campoRepetirContraseña.setBackground(new java.awt.Color(255, 255, 255));
+        campoRepetirContraseña.setBorder(null);
         campoRepetirContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoRepetirContraseñaActionPerformed(evt);
             }
         });
 
+        campoNombre.setBackground(new java.awt.Color(255, 255, 255));
+        campoNombre.setForeground(new java.awt.Color(0, 0, 0));
+        campoNombre.setBorder(null);
         campoNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoNombrecampoNombreActionPerformed(evt);
@@ -249,34 +287,30 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
         Registro3.setLayout(Registro3Layout);
         Registro3Layout.setHorizontalGroup(
             Registro3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator50, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator51, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator49)
-            .addComponent(jSeparator56, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator52, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator53, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator54, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Registro3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Registro3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel70)
-                    .addComponent(campoRepetirContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(291, 291, 291)
-                .addComponent(jSeparator55, javax.swing.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE))
+            .addComponent(jSeparator54)
+            .addComponent(jSeparator51)
+            .addComponent(jSeparator50)
+            .addComponent(jSeparator52)
+            .addComponent(jSeparator53)
             .addGroup(Registro3Layout.createSequentialGroup()
                 .addGroup(Registro3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Registro3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel66)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel62))
+                    .addComponent(jSeparator55, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                    .addComponent(jSeparator56, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Registro3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(Registro3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Registro3Layout.createSequentialGroup()
+                                .addGroup(Registro3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel68)
+                                    .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel69)
+                                    .addComponent(campoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel70)
+                                    .addComponent(campoRepetirContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel62))
                             .addComponent(jLabel61)
                             .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoTarjetaIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel65)
@@ -284,12 +318,15 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
                             .addComponent(campoSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel67)
                             .addComponent(campoFechaDeNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel68)
-                            .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel69)))
-                    .addGroup(Registro3Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(btnCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel66))
+                        .addGap(0, 277, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addComponent(jSeparator49)
+            .addGroup(Registro3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Registro3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoTarjetaIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         Registro3Layout.setVerticalGroup(
@@ -301,59 +338,55 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
                 .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(campoTarjetaIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator49, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator54, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jLabel64)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jSeparator51, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator51, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel65)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator50, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Registro3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel62)
-                    .addComponent(jLabel66))
+                .addComponent(jLabel66)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator52, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator52, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addComponent(jLabel67)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoFechaDeNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator53, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator54, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator49, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel69)
-                .addGroup(Registro3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Registro3Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jSeparator55, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Registro3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel70)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(campoRepetirContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator55, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel70)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoRepetirContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator56, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel62)
+                .addGap(29, 29, 29)
                 .addComponent(btnCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(Registro3);
@@ -412,6 +445,7 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
     }//GEN-LAST:event_campoSexocampoSexoActionPerformed
 
     private void btnCrearCuentabtnCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCuentabtnCrearCuentaActionPerformed
+       
         if(!validarCampoVacios(campoTarjetaIdentidad,"La cedula es requerida")){
         
         return;}
@@ -435,6 +469,10 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
          if(!validarCampoVacios(campoRepetirContraseña,"el campo repetir contraseña es requerido")){
        
         return;}
+          int generPosicion= campoSexo.getSelectedIndex();
+      if(generPosicion== 0){
+         JOptionPane.showMessageDialog(this,"Debe escoger un genero");
+          return;}
          
          char [] pass =  campoContraseña.getPassword();
          String clave1 = String.valueOf(pass);
@@ -446,18 +484,37 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
          
          if(validarEmail(campoCorreo.getText())){
              return;}
-        
-      Date fechaNacimiento = campoFechaDeNacimiento.getDate();
+   
+         Date fechaNacimiento = campoFechaDeNacimiento.getDate();
+Date fechaActual = new Date();
+
+// Verificar si la fecha de nacimiento es posterior a la fecha actual
+if (fechaNacimiento.compareTo(fechaActual) >= 0) {
+    JOptionPane.showMessageDialog(this, "La fecha escogida debe ser menor a la fecha actual");
+    return;
+}
+
+// Calcular la edad
+long diferenciaEnMillisegundos = Math.abs(fechaActual.getTime() - fechaNacimiento.getTime());
+long diferenciaEnAnios = diferenciaEnMillisegundos / (1000L * 60 * 60 * 24 * 365); // Aproximado
+
+// Verificar si es mayor de 10 años
+if (diferenciaEnAnios >= 10) {
+    // Registrar al usuario (tu código existente)
+} else {
+    JOptionPane.showMessageDialog(this, "Debes ser mayor de 10 años para registrarte");
+      return;
+}
+
+         
+     /* Date fechaNacimiento = campoFechaDeNacimiento.getDate();
       Date fechaActual = new Date();
       if(fechaNacimiento.compareTo(fechaActual)>= 0){
           JOptionPane.showMessageDialog(this,"La fecha escogida debe ser menor a la fecha actual");
-                    return;}
+                    return;}*/
       
       
-      int generPosicion= campoSexo.getSelectedIndex();
-      if(generPosicion== 0){
-         JOptionPane.showMessageDialog(this,"Debe escoger un genero");
-          return;}
+     
       
       
       crear();
@@ -497,12 +554,19 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
         // TODO add your handling code here:
     }//GEN-LAST:event_campoTarjetaIdentidadKeyPressed
 
+
     private void campoTarjetaIdentidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoTarjetaIdentidadKeyTyped
-       char tecla = evt.getKeyChar();
-       if(!Character.isDigit(tecla)){
-           evt.consume();
-            JOptionPane.showMessageDialog(this,"Solo puede ingresar numeros ");
-       }
+char tecla = evt.getKeyChar();
+
+    // Permitir la tecla de retroceso (borrar)
+    if (tecla == '\b') { // Código ASCII de la tecla de retroceso
+        return; // No hacer nada, permitir borrar
+    }
+
+    if (!Character.isDigit(tecla)) {
+        evt.consume();
+        JOptionPane.showMessageDialog(this, "Solo puede ingresar números");
+    }
     }//GEN-LAST:event_campoTarjetaIdentidadKeyTyped
 
     private void campoRepetirContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoRepetirContraseñaActionPerformed
@@ -523,8 +587,33 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
         }
         return true;
     }
-    
-    private boolean validarEmail(String email){
+ private boolean validarEmail(String email) {
+    // Expresión regular para validar el formato del email y los dominios permitidos
+    String regex = "^[A-Za-z0-9+_.-]+@([A-Za-z0-9.-]+\\.)*(com|co)$";
+    Pattern pattern = Pattern.compile(regex);
+    Matcher matcher = pattern.matcher(email);
+
+    if (!matcher.matches()) {
+        JOptionPane.showMessageDialog(this, "El email esta incorrecto al menos debe tener solo una arroba y terminar con .com .");
+        return false;
+    }
+
+    // Validaciones adicionales (opcional)
+    if (email.endsWith(".")) {
+        JOptionPane.showMessageDialog(this, "El email no puede terminar en punto.");
+        return false;
+    }
+
+    if (email.contains("..")) {
+        JOptionPane.showMessageDialog(this, "El email no puede contener puntos consecutivos.");
+        return false;
+    }
+
+    return true; // El email es válido
+}
+
+
+   /* private boolean validarEmail(String email){
          int cuentaArroba= 0;
         for(int i = 0 ;i < email.length();i++){
             char caracter = email.charAt(i);
@@ -561,7 +650,7 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
             }
         return true;
     }
-  
+  */
   
       
       
