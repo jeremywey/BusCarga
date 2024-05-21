@@ -482,7 +482,7 @@ String CrearUbica = System.getProperty("user.dir")+barra+"DatosTXT"+barra;
     }//GEN-LAST:event_btnRegresarMouseClicked
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        InterfazDeGestionDePasajes mostrar = new InterfazDeGestionDePasajes();
+        interfaz_Principal mostrar = new interfaz_Principal();
 
         mostrar.setVisible(true);
 
