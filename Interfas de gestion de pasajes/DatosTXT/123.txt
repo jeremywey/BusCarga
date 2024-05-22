@@ -1,0 +1,7 @@
+ Tarjeta de identidad:123
+ Nombre:123
+ Apellido:123
+ Sexo:Hombre
+ Fecha de nacimiento: Wed May 01 17:30:49 COT 2024
+ Correo: 123@123
+ Clave: [C@680b079a
