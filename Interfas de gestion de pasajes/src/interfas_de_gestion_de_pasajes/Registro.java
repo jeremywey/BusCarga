@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package interfas_de_gestion_de_pasajes;
+
 import java.io.BufferedReader;
-import java.io.File; 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,14 +20,13 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField; 
+import javax.swing.JTextField;
 
 /**
  *
  * @author Luis Llamas
  */
 public class Registro extends javax.swing.JFrame {
-
 
     /**
      * Creates new form Resgistro
@@ -35,31 +35,30 @@ public class Registro extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
-    private void crear(){
 
-  Clientes cliente = new Clientes();
+    private void crear() {
+
+        Clientes cliente = new Clientes();
         cliente.tarjetaIdentidad = campoTarjetaIdentidad.getText().trim();
         cliente.apellido = campoNombre.getText().trim();
         cliente.nombre = campoApellido.getText().trim();
-        cliente.sexo = ""+campoSexo.getSelectedItem();
+        cliente.sexo = "" + campoSexo.getSelectedItem();
         cliente.fechaDeNacimiento = campoFechaDeNacimiento.getDate();
         cliente.email = campoCorreo.getText().trim();
-        cliente.contraseña =  campoContraseña.getText().trim();
+        cliente.contraseña = campoContraseña.getText().trim();
         String archivoCSV = "clientes.txt";
-        String variableAComprobar = cliente.tarjetaIdentidad; 
+        String variableAComprobar = cliente.tarjetaIdentidad;
 
         boolean existe = false;
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
             String linea;
             while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split(","); 
+                String[] datos = linea.split(",");
 
-               
                 if (datos.length > 0 && datos[0].equals(variableAComprobar)) {
                     existe = true;
-                    break; 
+                    break;
                 }
             }
         } catch (IOException e) {
@@ -67,8 +66,9 @@ public class Registro extends javax.swing.JFrame {
         }
 
         if (existe) {
-        JOptionPane.showMessageDialog(this,"La tarjeta de indentidad ya se encuentra registrada"
-                + "\n por favor ingrese inicie sesion o ingrese una distinte");
+            JOptionPane.showMessageDialog(this, "La tarjeta de indentidad ya se encuentra registrada"
+                    + "\n por favor ingrese inicie sesion o ingrese una distinte");
+            JOptionPane.showMessageDialog(this,"1");
         } else {
             try {
                 PrintWriter writer = new PrintWriter(new FileWriter("clientes.txt", true));
@@ -80,7 +80,7 @@ public class Registro extends javax.swing.JFrame {
                         cliente.sexo,
                         cliente.fechaDeNacimiento,
                         cliente.email,
-                        cliente.contraseña); 
+                        cliente.contraseña);
                 writer.close();
                 JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
                 System.out.println("Datos guardados correctamente.");
@@ -89,11 +89,9 @@ public class Registro extends javax.swing.JFrame {
             }
 
         }
-        
-    }
-    
 
-    
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -163,10 +161,8 @@ public class Registro extends javax.swing.JFrame {
         jLabel61.setForeground(new java.awt.Color(102, 102, 102));
         jLabel61.setText("Registro de usuarios");
 
-        jLabel63.setForeground(new java.awt.Color(0, 0, 0));
         jLabel63.setText("Tarjeta de identidad:");
 
-        campoTarjetaIdentidad.setBackground(new java.awt.Color(255, 255, 255));
         campoTarjetaIdentidad.setBorder(null);
         campoTarjetaIdentidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,14 +178,10 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
-        jLabel64.setForeground(new java.awt.Color(0, 0, 0));
         jLabel64.setText("Nombres:");
 
-        jLabel65.setForeground(new java.awt.Color(0, 0, 0));
         jLabel65.setText("Apellidos:");
 
-        campoApellido.setBackground(new java.awt.Color(255, 255, 255));
-        campoApellido.setForeground(new java.awt.Color(0, 0, 0));
         campoApellido.setBorder(null);
         campoApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,11 +189,8 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
-        jLabel66.setForeground(new java.awt.Color(0, 0, 0));
         jLabel66.setText("Sexo:");
 
-        campoSexo.setBackground(new java.awt.Color(255, 255, 255));
-        campoSexo.setForeground(new java.awt.Color(0, 0, 0));
         campoSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ejile un Sexo...", "Hombre", "Mujer" }));
         campoSexo.setToolTipText("");
         campoSexo.setBorder(new javax.swing.border.MatteBorder(null));
@@ -221,14 +210,10 @@ public class Registro extends javax.swing.JFrame {
         });
 
         jLabel67.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel67.setForeground(new java.awt.Color(0, 0, 0));
         jLabel67.setText("Fecha de nacimiento:");
 
-        jLabel68.setForeground(new java.awt.Color(0, 0, 0));
         jLabel68.setText("Correo:");
 
-        campoCorreo.setBackground(new java.awt.Color(255, 255, 255));
-        campoCorreo.setForeground(new java.awt.Color(0, 0, 0));
         campoCorreo.setBorder(null);
         campoCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,10 +222,8 @@ public class Registro extends javax.swing.JFrame {
         });
 
         jLabel69.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel69.setForeground(new java.awt.Color(0, 0, 0));
         jLabel69.setText("Contraseña:");
 
-        jLabel70.setForeground(new java.awt.Color(0, 0, 0));
         jLabel70.setText("Repita su contraseña");
 
         btnCrearCuenta.setBackground(new java.awt.Color(255, 153, 51));
@@ -255,10 +238,7 @@ public class Registro extends javax.swing.JFrame {
         });
 
         campoFechaDeNacimiento.setBackground(new java.awt.Color(255, 255, 255));
-        campoFechaDeNacimiento.setForeground(new java.awt.Color(0, 0, 0));
 
-        campoContraseña.setBackground(new java.awt.Color(255, 255, 255));
-        campoContraseña.setForeground(new java.awt.Color(0, 0, 0));
         campoContraseña.setBorder(null);
         campoContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,7 +246,6 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
-        campoRepetirContraseña.setBackground(new java.awt.Color(255, 255, 255));
         campoRepetirContraseña.setBorder(null);
         campoRepetirContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,8 +253,6 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
-        campoNombre.setBackground(new java.awt.Color(255, 255, 255));
-        campoNombre.setForeground(new java.awt.Color(0, 0, 0));
         campoNombre.setBorder(null);
         campoNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,7 +271,7 @@ public class Registro extends javax.swing.JFrame {
             .addComponent(jSeparator53)
             .addGroup(Registro3Layout.createSequentialGroup()
                 .addGroup(Registro3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator55, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                    .addComponent(jSeparator55, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator56, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Registro3Layout.createSequentialGroup()
                         .addContainerGap()
@@ -319,7 +296,7 @@ public class Registro extends javax.swing.JFrame {
                             .addComponent(jLabel67)
                             .addComponent(campoFechaDeNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel66))
-                        .addGap(0, 277, Short.MAX_VALUE)))
+                        .addGap(0, 250, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jSeparator49)
             .addGroup(Registro3Layout.createSequentialGroup()
@@ -386,7 +363,7 @@ public class Registro extends javax.swing.JFrame {
                 .addComponent(jLabel62)
                 .addGap(29, 29, 29)
                 .addComponent(btnCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(Registro3);
@@ -406,7 +383,7 @@ public class Registro extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(461, Short.MAX_VALUE))
+                .addContainerGap(687, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
@@ -425,7 +402,7 @@ public class Registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoTarjetaIdentidadcampoCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTarjetaIdentidadcampoCedulaActionPerformed
-        
+
     }//GEN-LAST:event_campoTarjetaIdentidadcampoCedulaActionPerformed
 
     private void campoNombrecampoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombrecampoNombreActionPerformed
@@ -441,93 +418,59 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_campoSexocampoSexoAncestorAdded
 
     private void campoSexocampoSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSexocampoSexoActionPerformed
-        
+
     }//GEN-LAST:event_campoSexocampoSexoActionPerformed
 
     private void btnCrearCuentabtnCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCuentabtnCrearCuentaActionPerformed
-       
-        if(!validarCampoVacios(campoTarjetaIdentidad,"La cedula es requerida")){
-        
-        return;}
-        
-        if(!validarCampoVacios(campoNombre,"El nombre es requerido")){
-        
-        return;}
-        
-        if(!validarCampoVacios(campoApellido,"El apellido es requerido")){
-        
-        return;}
-        
-         if(!validarCampoVacios(campoCorreo,"El campo correo es requerido")){
-        
-        return;}
-         
-        if(!validarCampoVacios(campoContraseña,"La contraseña es requerida")){
-        
-        return;}
-        
-         if(!validarCampoVacios(campoRepetirContraseña,"el campo repetir contraseña es requerido")){
-       
-        return;}
-          int generPosicion= campoSexo.getSelectedIndex();
-      if(generPosicion== 0){
-         JOptionPane.showMessageDialog(this,"Debe escoger un genero");
-          return;}
-         
-         char [] pass =  campoContraseña.getPassword();
-         String clave1 = String.valueOf(pass);
-         pass = campoRepetirContraseña.getPassword();
-         String clave2 = String.valueOf(pass);
-         if(!clave1.equals(clave2)){
-             JOptionPane.showMessageDialog(this,"La Contraseña que ingreso debe ser la misma en el campo de repita contraseña ");
-             return;}
-         
-         if(validarEmail(campoCorreo.getText())){
-             return;}
-   
-         Date fechaNacimiento = campoFechaDeNacimiento.getDate();
-Date fechaActual = new Date();
+
+        if (!validarCampoVacios(campoTarjetaIdentidad, "La Cedula es requerida ") && !validarCampoVacios(campoNombre, "El nombre es requerido") && !validarCampoVacios(campoApellido, "El apellido es requerido") && !validarCampoVacios(campoCorreo, "El campo correo es requerido") && !validarCampoVacios(campoContraseña, "La contraseña es requerida") && !validarCampoVacios(campoRepetirContraseña, "el campo repetir contraseña es requerido")) {
+
+            return;
+        }else{
+
+        int generPosicion = campoSexo.getSelectedIndex();
+        if (generPosicion == 0) {
+            JOptionPane.showMessageDialog(this, "Debe escoger un genero");
+            return;
+        }
+
+        char[] pass = campoContraseña.getPassword();
+        String clave1 = String.valueOf(pass);
+        pass = campoRepetirContraseña.getPassword();
+        String clave2 = String.valueOf(pass);
+        if (!clave1.equals(clave2)) {
+            JOptionPane.showMessageDialog(this, "La Contraseña que ingreso debe ser la misma en el campo de repita contraseña ");
+            return;
+        }
+
+        if (!validarEmail(campoCorreo.getText())) {
+            return;
+        }
+
+        Date fechaNacimiento = campoFechaDeNacimiento.getDate();
+        Date fechaActual = new Date();
 
 // Verificar si la fecha de nacimiento es posterior a la fecha actual
-if (fechaNacimiento.compareTo(fechaActual) >= 0) {
-    JOptionPane.showMessageDialog(this, "La fecha escogida debe ser menor a la fecha actual");
-    return;
-}
+        if (fechaNacimiento.compareTo(fechaActual) >= 0) {
+            JOptionPane.showMessageDialog(this, "La fecha escogida debe ser menor a la fecha actual");
+            return;
+        }
 
 // Calcular la edad
-long diferenciaEnMillisegundos = Math.abs(fechaActual.getTime() - fechaNacimiento.getTime());
-long diferenciaEnAnios = diferenciaEnMillisegundos / (1000L * 60 * 60 * 24 * 365); // Aproximado
+        long diferenciaEnMillisegundos = Math.abs(fechaActual.getTime() - fechaNacimiento.getTime());
+        long diferenciaEnAnios = diferenciaEnMillisegundos / (1000L * 60 * 60 * 24 * 365); // Aproximado
 
 // Verificar si es mayor de 10 años
-if (diferenciaEnAnios >= 10) {
-    // Registrar al usuario (tu código existente)
-} else {
-    JOptionPane.showMessageDialog(this, "Debes ser mayor de 10 años para registrarte");
-      return;
-}
+        if (diferenciaEnAnios >= 10) {
+            crear();
+        } else {
+            JOptionPane.showMessageDialog(this, "Debes ser mayor de 10 años para registrarte");
+            return;
+        }
 
-         
-     /* Date fechaNacimiento = campoFechaDeNacimiento.getDate();
-      Date fechaActual = new Date();
-      if(fechaNacimiento.compareTo(fechaActual)>= 0){
-          JOptionPane.showMessageDialog(this,"La fecha escogida debe ser menor a la fecha actual");
-                    return;}*/
-      
-      
-     
-      
-      
-      crear();
-         
-        
-      
-     
-      
-      
-      
-      
-       
-      
+
+        }
+
     }//GEN-LAST:event_btnCrearCuentabtnCrearCuentaActionPerformed
 
     private void campoCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCorreoActionPerformed
@@ -556,17 +499,17 @@ if (diferenciaEnAnios >= 10) {
 
 
     private void campoTarjetaIdentidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoTarjetaIdentidadKeyTyped
-char tecla = evt.getKeyChar();
+        char tecla = evt.getKeyChar();
 
-    // Permitir la tecla de retroceso (borrar)
-    if (tecla == '\b') { // Código ASCII de la tecla de retroceso
-        return; // No hacer nada, permitir borrar
-    }
+        // Permitir la tecla de retroceso (borrar)
+        if (tecla == '\b') { // Código ASCII de la tecla de retroceso
+            return; // No hacer nada, permitir borrar
+        }
 
-    if (!Character.isDigit(tecla)) {
-        evt.consume();
-        JOptionPane.showMessageDialog(this, "Solo puede ingresar números");
-    }
+        if (!Character.isDigit(tecla)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Solo puede ingresar números");
+        }
     }//GEN-LAST:event_campoTarjetaIdentidadKeyTyped
 
     private void campoRepetirContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoRepetirContraseñaActionPerformed
@@ -576,84 +519,43 @@ char tecla = evt.getKeyChar();
     /**
      * @param args the command line arguments
      */
-      
-    private boolean validarCampoVacios(JTextField campo, String mensaje){
+    private boolean validarCampoVacios(JTextField campo, String mensaje) {
         String dato = campo.getText();
         dato = dato.trim();
-        if(dato.isEmpty()){
-            JOptionPane.showMessageDialog(this,mensaje,"Validar",JOptionPane.ERROR_MESSAGE);
-               return false;
+        if (dato.isEmpty()) {
+            JOptionPane.showMessageDialog(this, mensaje, "Validar", JOptionPane.ERROR_MESSAGE);
+            return false;
 
         }
         return true;
     }
- private boolean validarEmail(String email) {
-    // Expresión regular para validar el formato del email y los dominios permitidos
-    String regex = "^[A-Za-z0-9+_.-]+@([A-Za-z0-9.-]+\\.)*(com|co)$";
-    Pattern pattern = Pattern.compile(regex);
-    Matcher matcher = pattern.matcher(email);
 
-    if (!matcher.matches()) {
-        JOptionPane.showMessageDialog(this, "El email esta incorrecto al menos debe tener solo una arroba y terminar con .com .");
-        return false;
-    }
+    private boolean validarEmail(String email) {
+        // Expresión regular para validar el formato del email y los dominios permitidos
+        String regex = "^[A-Za-z0-9+_.-]+@([A-Za-z0-9.-]+\\.)*(com|co)$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
 
-    // Validaciones adicionales (opcional)
-    if (email.endsWith(".")) {
-        JOptionPane.showMessageDialog(this, "El email no puede terminar en punto.");
-        return false;
-    }
-
-    if (email.contains("..")) {
-        JOptionPane.showMessageDialog(this, "El email no puede contener puntos consecutivos.");
-        return false;
-    }
-
-    return true; // El email es válido
-}
-
-
-   /* private boolean validarEmail(String email){
-         int cuentaArroba= 0;
-        for(int i = 0 ;i < email.length();i++){
-            char caracter = email.charAt(i);
-            if(Character.isSpaceChar(caracter)){
-                JOptionPane.showMessageDialog(this,"");
-                        return false;
-            } 
-           
-          
-           
-            if((caracter >= 33 && caracter <= 44)||(caracter == 47) || (caracter >= 58 && caracter <= 63)
-                    || (caracter >= 58 && caracter <= 63) ||(caracter >= 91 && caracter <= 94)
-                    || caracter == 96 || (caracter >= 123)){
-                String mensaje = "letras, numeros, _ . @";
-                JOptionPane.showMessageDialog(this,"El email solo puede tene "+ mensaje);
-           return false;
-            }
-            
-            if(email.startsWith("@") || email.endsWith("@") ){
-                JOptionPane.showMessageDialog(this,"El email solo puede empezar "
-                        + "o terminar con @");
-                return false;
-            }
-              if (caracter == ('@')){
-                ++ cuentaArroba;     
-               return false;
-            }
-         
+        if (!matcher.matches()) {
+            JOptionPane.showMessageDialog(this, "El email esta incorrecto al menos debe tener solo una arroba y terminar con .com .");
+            return false;
         }
-         if (cuentaArroba < 1 || cuentaArroba > 1){
-              
-                JOptionPane.showMessageDialog(this,"El email solo puede tener un arroba");
-                return false;
-            }
-        return true;
+
+        // Validaciones adicionales (opcional)
+        if (email.endsWith(".")) {
+            JOptionPane.showMessageDialog(this, "El email no puede terminar en punto.");
+            return false;
+        }
+
+        if (email.contains("..")) {
+            JOptionPane.showMessageDialog(this, "El email no puede contener puntos consecutivos.");
+            return false;
+        }
+
+        return true; // El email es válido
     }
-  */
-  
-      
-      
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Registro3;
     private javax.swing.JButton btnCrearCuenta;
@@ -688,5 +590,4 @@ char tecla = evt.getKeyChar();
     private javax.swing.JSeparator jSeparator56;
     // End of variables declaration//GEN-END:variables
 
- 
 }
